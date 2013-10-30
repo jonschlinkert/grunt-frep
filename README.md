@@ -1,6 +1,6 @@
 # grunt-frep [![NPM version](https://badge.fury.io/js/grunt-frep.png)](http://badge.fury.io/js/grunt-frep) 
 
-> A find and replace task. Replace strings with an array or object of RegExp or string replacement patterns.
+> A find and replace Grunt plugin, based on frep. Replace strings with an array or object of RegExp or string replacement patterns.
 
 This plugin uses [frep](https://github.com/helpers/frep).
 
