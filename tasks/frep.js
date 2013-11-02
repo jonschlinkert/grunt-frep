@@ -1,6 +1,6 @@
 /*
  * grunt-frep
- * https://github.com/erickrdch/grunt-frep
+ * https://github.com/jonschlinkert/grunt-frep
  *
  * Copyright (c) 2013 Jon Schlinkert
  * Licensed under the MIT license.

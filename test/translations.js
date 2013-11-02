@@ -1,9 +1,6 @@
 /**
  * Test Fixures: translation patterns
- * Assemble <http://assemble.io>
- * Created and maintained by Jon Schlinkert and Brian Woodward
- *
- * Copyright (c) 2013 Upstage.
+ * Copyright (c) 2013 Jon Schlinkert.
  * Licensed under the MIT License (MIT).
  */
 
