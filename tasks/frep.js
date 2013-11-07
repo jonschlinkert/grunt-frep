@@ -52,7 +52,7 @@ module.exports = function(grunt) {
       grunt.file.write(fp.dest, src);
 
       // Print a success message.
-      grunt.log.ok('File '.yellow + '"' + fp.dest + '" transform.');
+      grunt.log.ok('File '.yellow + '"' + fp.dest + '" transformed.');
     });
   });
 
