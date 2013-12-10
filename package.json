@@ -1,7 +1,7 @@
 {
   "name": "grunt-frep",
   "description": "A find and replace Grunt plugin, based on frep. Replace strings with an array or object of RegExp or string replacement patterns.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/jonschlinkert/grunt-frep",
   "author": {
     "name": "Jon Schlinkert",
@@ -24,7 +24,8 @@
     "node": ">= 0.8.0"
   },
   "dependencies": {
-    "frep": "~0.1.2"
+    "frep": "~0.1.2",
+    "lodash": "~2.4.1"
   },
   "devDependencies": {
     "grunt-contrib-clean": "~0.4.1",

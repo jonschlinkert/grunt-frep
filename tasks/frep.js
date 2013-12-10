@@ -8,10 +8,13 @@
 
 'use strict';
 
-var path = require('path');
-var frep = require('frep');
 
 module.exports = function(grunt) {
+
+  var path = require('path');
+  var frep = require('frep');
+  var _ = require('lodash');
+
 
   grunt.registerMultiTask('frep', 'A find and replace task. Replace strings with RegExp or string replacement patterns.', function() {
 
@@ -22,9 +25,6 @@ module.exports = function(grunt) {
 
     // Iterate over all src-dest file pairs.
     this.files.forEach(function(fp) {
-
-      // The source files to search. The "nonull" option is used
-      // to retain invalid files/patterns so they can be warned about.
       var files = grunt.file.expand({nonull: true}, fp.src);
 
       // Concat specified files + footer.
@@ -34,18 +34,21 @@ module.exports = function(grunt) {
           grunt.log.warn('Source file "' + filepath + '" not found.');
           return '';
         }
+        var content = grunt.file.read(filepath);
+        var replacements = options.replacements;
 
         // Read source files and execute replacement patterns
-        if(grunt.util.kindOf(options.replacements) === 'array') {
+        if(grunt.util.kindOf(replacements) === 'array' || grunt.util.kindOf(replacements) === 'string') {
+          // if string (e.g. '<%= foo.bar.replacements'), coerce to array
+          replacements = Array.isArray(replacements) ? replacements : [replacements];
           // If given replacement patterns are an array, use `frep.strWithArr`
-          return frep.strWithArr(grunt.file.read(filepath), options.replacements);
-        } else if(grunt.util.kindOf(options.replacements) === 'object') {
+          return frep.strWithArr(content, _.flatten(replacements));
+        } else if(grunt.util.kindOf(replacements) === 'object') {
           // If given replacement patterns are an object, use `frep.strWithObj`
-          return frep.strWithObj(grunt.file.read(filepath), options.replacements);
+          return frep.strWithObj(content, replacements);
         } else {
           grunt.log.warn('Replacement patterns must be formatted as an array or object. See github.com/helpers/frep for more info.');
         }
-
       }).join('');
 
       // Write the destination file.
